@@ -1,0 +1,10 @@
+.git
+.gitignore
+.docker/
+README.md
+Gemfile.lock
+vendor
+.dockerignore
+Dockerfile
+docker-compose.yml
+_site

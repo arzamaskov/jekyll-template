@@ -1,0 +1,11 @@
+services:
+  jekyll:
+    build: .
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    working_dir: /srv/jekyll
+    volumes:
+      - ./site/:/srv/jekyll
+    environment:
+      - JEKYLL_ENV=development
