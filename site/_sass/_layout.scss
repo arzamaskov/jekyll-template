@@ -9,6 +9,14 @@
   padding: var(--space-5) 0 var(--space-6);
 }
 
+.is-page .site-header {
+  padding-bottom: 1.35rem; /* ~10px tighter than space-6 */
+}
+
+.is-post .site-header {
+  padding-bottom: var(--space-6);
+}
+
 .site-header__inner {
   display: flex;
   flex-wrap: wrap;

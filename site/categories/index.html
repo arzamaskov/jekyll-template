@@ -37,7 +37,8 @@ permalink: /categories/
       {% assign cat_posts = category[1] %}
       <section class="taxonomy-section" id="{{ cat_name | slugify }}" data-category-section="{{ cat_name | escape }}">
         <h2 class="taxonomy-section__title">{{ cat_name }}</h2>
-        <p class="taxonomy-section__count">{{ cat_posts.size }} {{ ui.categories.count }}</p>
+        {%- include pluralize-posts.html count=cat_posts.size -%}
+        <p class="taxonomy-section__count">{{ cat_posts.size }} {{ posts_count_label }}</p>
         {% include post-list.html posts=cat_posts %}
       </section>
     {% endfor %}

@@ -37,7 +37,8 @@ permalink: /tags/
         {% assign tag_posts = tag_pair[1] %}
         <section class="taxonomy-section" id="{{ tag_name | slugify }}" data-tag-section="{{ tag_name | escape }}">
           <h2 class="taxonomy-section__title">{{ tag_name }}</h2>
-          <p class="taxonomy-section__count">{{ tag_posts.size }} {{ ui.tags.count }}</p>
+          {%- include pluralize-posts.html count=tag_posts.size -%}
+          <p class="taxonomy-section__count">{{ tag_posts.size }} {{ posts_count_label }}</p>
           {% include post-list.html posts=tag_posts %}
         </section>
       {% endfor %}

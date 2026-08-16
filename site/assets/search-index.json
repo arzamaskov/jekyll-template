@@ -15,7 +15,8 @@ permalink: /assets/search-index.json
     "category": {{ post_category | default: "" | jsonify }},
     "tags": {% if post.tags %}{{ post.tags | jsonify }}{% else %}[]{% endif %},
     "date": {{ post.date | date_to_xmlschema | jsonify }},
-    "dateDisplay": {{ post.date | date: "%d.%m.%Y" | jsonify }},
+    {%- include format-date.html date=post.date -%}
+    "dateDisplay": {{ date_display | jsonify }},
     "readingMinutes": {{ reading_minutes }},
     "image": {% if post.image.path %}{{ post.image.path | relative_url | jsonify }}{% else %}null{% endif %},
     "imageAlt": {% if post.image.alt %}{{ post.image.alt | jsonify }}{% else %}null{% endif %}

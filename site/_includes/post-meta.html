@@ -9,7 +9,8 @@
 
 <p class="post-meta">
   <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
-    {{ post.date | date: "%d.%m.%Y" }}
+    {%- include format-date.html date=post.date -%}
+    {{ date_display }}
   </time>
   {% if post_category %}
     <span class="post-meta__sep" aria-hidden="true">·</span>

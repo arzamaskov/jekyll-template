@@ -4,6 +4,7 @@
 <html lang="{{ page_lang }}">
   {% include head.html %}
   <body
+    class="{% if page.layout == 'post' %}is-post{% else %}is-page{% endif %}"
     data-ui-copy="{{ ui.code.copy }}"
     data-ui-copied="{{ ui.code.copied }}"
     data-ui-close="{{ ui.lightbox.close }}"

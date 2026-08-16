@@ -20,13 +20,29 @@ ru:
     previous: "Предыдущая"
     next: "Следующая"
     toc: "Содержание"
+  posts_count:
+    one: "публикация"
+    few: "публикации"
+    many: "публикаций"
+  months:
+    - ""
+    - "января"
+    - "февраля"
+    - "марта"
+    - "апреля"
+    - "мая"
+    - "июня"
+    - "июля"
+    - "августа"
+    - "сентября"
+    - "октября"
+    - "ноября"
+    - "декабря"
   categories:
     title: "Категории"
-    count: "публикаций"
     empty: "Категории пока не заданы"
   tags:
     title: "Теги"
-    count: "публикаций"
     empty: "Теги пока не заданы"
     reset: "Сбросить"
   code:
@@ -67,13 +83,28 @@ en:
     previous: "Previous"
     next: "Next"
     toc: "Contents"
+  posts_count:
+    one: "post"
+    other: "posts"
+  months:
+    - ""
+    - "January"
+    - "February"
+    - "March"
+    - "April"
+    - "May"
+    - "June"
+    - "July"
+    - "August"
+    - "September"
+    - "October"
+    - "November"
+    - "December"
   categories:
     title: "Categories"
-    count: "posts"
     empty: "No categories yet"
   tags:
     title: "Tags"
-    count: "posts"
     empty: "No tags yet"
     reset: "Reset"
   code:

@@ -38,10 +38,12 @@ layout: default
   {% endif %}
 
   {% if page.toc %}
-    <nav class="post__toc" aria-label="{{ ui.post.toc }}">
-      <p class="post__toc-title">{{ ui.post.toc }}</p>
-      {% toc %}
-    </nav>
+    <details class="post__toc">
+      <summary class="post__toc-summary">{{ ui.post.toc }}</summary>
+      <div class="post__toc-body">
+        {% toc %}
+      </div>
+    </details>
   {% endif %}
 
   <div class="post__content prose" itemprop="articleBody">

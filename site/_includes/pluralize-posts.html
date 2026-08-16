@@ -1,0 +1,27 @@
+{%- comment -%}
+  Expects: include.count
+  Optional: include.lang
+  Sets: posts_count_label  (e.g. "публикация" / "posts")
+{%- endcomment -%}
+{%- assign plural_lang = include.lang | default: page.lang | default: site.lang | default: "ru" -%}
+{%- assign plural_ui = site.data.ui[plural_lang] -%}
+{%- assign plural_n = include.count | plus: 0 -%}
+{%- if plural_lang == "en" -%}
+  {%- if plural_n == 1 -%}
+    {%- assign posts_count_label = plural_ui.posts_count.one -%}
+  {%- else -%}
+    {%- assign posts_count_label = plural_ui.posts_count.other -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign mod10 = plural_n | modulo: 10 -%}
+  {%- assign mod100 = plural_n | modulo: 100 -%}
+  {%- if mod100 >= 11 and mod100 <= 14 -%}
+    {%- assign posts_count_label = plural_ui.posts_count.many -%}
+  {%- elsif mod10 == 1 -%}
+    {%- assign posts_count_label = plural_ui.posts_count.one -%}
+  {%- elsif mod10 >= 2 and mod10 <= 4 -%}
+    {%- assign posts_count_label = plural_ui.posts_count.few -%}
+  {%- else -%}
+    {%- assign posts_count_label = plural_ui.posts_count.many -%}
+  {%- endif -%}
+{%- endif -%}

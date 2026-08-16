@@ -1,0 +1,17 @@
+{%- comment -%}
+  Expects: include.date
+  Optional: include.lang
+  Sets: date_display
+{%- endcomment -%}
+{%- assign date_lang = include.lang | default: page.lang | default: site.lang | default: "ru" -%}
+{%- assign date_ui = site.data.ui[date_lang] -%}
+{%- assign date_value = include.date -%}
+{%- assign date_day = date_value | date: "%d" | plus: 0 -%}
+{%- assign date_month = date_value | date: "%m" | plus: 0 -%}
+{%- assign date_year = date_value | date: "%Y" -%}
+{%- assign date_month_name = date_ui.months[date_month] -%}
+{%- if date_lang == "en" -%}
+  {%- assign date_display = date_month_name | append: " " | append: date_day | append: ", " | append: date_year -%}
+{%- else -%}
+  {%- assign date_display = date_day | append: " " | append: date_month_name | append: " " | append: date_year -%}
+{%- endif -%}

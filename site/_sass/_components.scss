@@ -8,7 +8,13 @@
 
 .search {
   position: relative;
-  max-width: 28rem;
+  max-width: 25rem; /* 400px */
+}
+
+@media (max-width: 639px) {
+  .search {
+    max-width: none;
+  }
 }
 
 .search__input {
@@ -132,7 +138,7 @@
 }
 
 .post-teaser__meta {
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.65rem;
   color: var(--color-text-muted);
   font-size: 0.8125rem;
   display: flex;
@@ -435,18 +441,49 @@
 
 .post__toc {
   margin: 0 0 var(--space-6);
-  padding: var(--space-4) 0;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  padding: 0;
+  border: 0;
   font-size: 0.95rem;
 }
 
-.post__toc-title {
-  margin: 0 0 var(--space-3);
-  font-size: 0.8rem;
+.post__toc-summary {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  cursor: pointer;
   color: var(--color-text-muted);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  list-style: none;
+  user-select: none;
+}
+
+.post__toc-summary::-webkit-details-marker {
+  display: none;
+}
+
+.post__toc-summary::after {
+  content: "▾";
+  font-size: 0.75em;
+  opacity: 0.8;
+}
+
+.post__toc[open] .post__toc-summary::after {
+  content: "▴";
+}
+
+.post__toc-summary:hover {
+  color: var(--color-text);
+}
+
+.post__toc-summary:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius);
+}
+
+.post__toc-body {
+  margin-top: var(--space-3);
 }
 
 .toc-list,
@@ -528,20 +565,27 @@
   z-index: 1;
   border: 1px solid transparent;
   background: transparent;
-  color: rgba(232, 230, 225, 0.55);
+  color: rgba(232, 230, 225, 0.45);
   font-size: 0.7rem;
   line-height: 1;
   padding: 0.28rem 0.45rem;
   border-radius: var(--radius);
-  opacity: 0.65;
+  opacity: 0.55;
 }
 
-.code-block__copy:hover,
-.code-block__copy:focus-visible {
+.code-block__copy:hover {
   opacity: 1;
   color: var(--color-code-block-text);
   border-color: rgba(255, 255, 255, 0.16);
   background: rgba(255, 255, 255, 0.08);
+}
+
+.code-block__copy:focus-visible {
+  opacity: 1;
+  color: var(--color-code-block-text);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 2px rgba(232, 230, 225, 0.35);
 }
 
 .lightbox {

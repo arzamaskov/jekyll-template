@@ -12,6 +12,7 @@
     {% for post in posts %}
       {%- include post-category.html post=post -%}
       {%- include reading-time.html content=post.content -%}
+      {%- include format-date.html date=post.date -%}
       <li
         class="post-list__item"
         data-title="{{ post.title | escape }}"
@@ -20,14 +21,14 @@
         data-tags="{{ post.tags | join: ',' | escape }}"
         data-url="{{ post.url | relative_url }}"
         data-date="{{ post.date | date_to_xmlschema }}"
-        data-date-display="{{ post.date | date: '%d.%m.%Y' }}"
+        data-date-display="{{ date_display | escape }}"
         data-reading="{{ reading_minutes }}"
         {% if post.image.path %}data-image="{{ post.image.path | relative_url }}" data-image-alt="{{ post.image.alt | default: post.title | escape }}"{% endif %}
       >
         <article class="post-teaser">
           <div class="post-teaser__body">
             <p class="post-teaser__meta">
-              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d.%m.%Y" }}</time>
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ date_display }}</time>
               {% if post_category %}
                 <span aria-hidden="true">·</span>
                 <a href="{{ '/categories/' | relative_url }}?category={{ post_category | uri_escape }}">{{ post_category }}</a>
