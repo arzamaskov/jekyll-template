@@ -1,0 +1,10 @@
+{%- comment -%}
+  Expects: include.content
+  Sets: reading_minutes
+{%- endcomment -%}
+{%- assign words = include.content | strip_html | number_of_words -%}
+{%- assign wpm = site.words_per_minute | default: 180 -%}
+{%- assign reading_minutes = words | divided_by: wpm -%}
+{%- if reading_minutes < 1 -%}
+  {%- assign reading_minutes = 1 -%}
+{%- endif -%}

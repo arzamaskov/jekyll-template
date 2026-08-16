@@ -1,0 +1,93 @@
+ru:
+  nav:
+    home: "Главная"
+    categories: "Категории"
+    tags: "Теги"
+  search:
+    label: "Поиск"
+    placeholder: "Поиск по статьям…"
+    clear: "Очистить"
+    empty: "По вашему запросу ничего не найдено"
+  filters:
+    category: "Категория"
+    tags: "Теги"
+    all_categories: "Все категории"
+    reset: "Сбросить фильтры"
+    empty_tags: "Нет публикаций с выбранными тегами"
+    empty_posts: "Нет публикаций"
+  post:
+    reading_time: "мин чтения"
+    previous: "Предыдущая"
+    next: "Следующая"
+    toc: "Содержание"
+  categories:
+    title: "Категории"
+    count: "публикаций"
+    empty: "Категории пока не заданы"
+  tags:
+    title: "Теги"
+    count: "публикаций"
+    empty: "Теги пока не заданы"
+    reset: "Сбросить"
+  code:
+    copy: "Копировать"
+    copied: "Скопировано"
+  pagination:
+    newer: "Новее"
+    older: "Старее"
+    page: "Страница"
+  not_found:
+    title: "Страница не найдена"
+    message: "Такой страницы нет. Вернитесь на главную."
+    home: "На главную"
+  footer:
+    feed: "RSS"
+  lightbox:
+    close: "Закрыть"
+
+en:
+  nav:
+    home: "Home"
+    categories: "Categories"
+    tags: "Tags"
+  search:
+    label: "Search"
+    placeholder: "Search posts…"
+    clear: "Clear"
+    empty: "Nothing found for your query"
+  filters:
+    category: "Category"
+    tags: "Tags"
+    all_categories: "All categories"
+    reset: "Reset filters"
+    empty_tags: "No posts with the selected tags"
+    empty_posts: "No posts yet"
+  post:
+    reading_time: "min read"
+    previous: "Previous"
+    next: "Next"
+    toc: "Contents"
+  categories:
+    title: "Categories"
+    count: "posts"
+    empty: "No categories yet"
+  tags:
+    title: "Tags"
+    count: "posts"
+    empty: "No tags yet"
+    reset: "Reset"
+  code:
+    copy: "Copy"
+    copied: "Copied"
+  pagination:
+    newer: "Newer"
+    older: "Older"
+    page: "Page"
+  not_found:
+    title: "Page not found"
+    message: "This page does not exist. Go back home."
+    home: "Home"
+  footer:
+    feed: "RSS"
+  lightbox:
+    close: "Close"

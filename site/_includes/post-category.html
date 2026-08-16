@@ -1,0 +1,6 @@
+{%- comment -%}
+  Expects: include.post
+  Sets: post_category
+  Jekyll stores singular `category` inside `categories`, so read from the array.
+{%- endcomment -%}
+{%- assign post_category = include.post.categories | first | default: include.post.category -%}

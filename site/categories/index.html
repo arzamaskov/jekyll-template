@@ -1,0 +1,45 @@
+---
+layout: default
+title: Категории
+permalink: /categories/
+---
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
+
+<section class="taxonomy" data-categories-page>
+  <header class="page__header">
+    <h1 class="page__title">{{ ui.categories.title }}</h1>
+  </header>
+
+  {% if site.categories.size == 0 %}
+    <p class="empty-state">{{ ui.categories.empty }}</p>
+  {% else %}
+    <ul class="taxonomy-index" data-category-index>
+      {% assign sorted_categories = site.categories | sort %}
+      {% for category in sorted_categories %}
+        {% assign cat_name = category[0] %}
+        {% assign cat_posts = category[1] %}
+        <li>
+          <a
+            class="taxonomy-index__link"
+            href="#{{ cat_name | slugify }}"
+            data-category-link="{{ cat_name | escape }}"
+          >
+            <span>{{ cat_name }}</span>
+            <span class="taxonomy-index__count">{{ cat_posts.size }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% for category in sorted_categories %}
+      {% assign cat_name = category[0] %}
+      {% assign cat_posts = category[1] %}
+      <section class="taxonomy-section" id="{{ cat_name | slugify }}" data-category-section="{{ cat_name | escape }}">
+        <h2 class="taxonomy-section__title">{{ cat_name }}</h2>
+        <p class="taxonomy-section__count">{{ cat_posts.size }} {{ ui.categories.count }}</p>
+        {% include post-list.html posts=cat_posts %}
+      </section>
+    {% endfor %}
+  {% endif %}
+</section>

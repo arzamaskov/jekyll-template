@@ -1,0 +1,24 @@
+---
+layout: null
+permalink: /assets/search-index.json
+---
+[
+{%- for post in site.posts -%}
+  {%- include post-category.html post=post -%}
+  {%- include reading-time.html content=post.content -%}
+  {%- assign excerpt_text = post.description | default: post.excerpt | strip_html | strip | truncate: 280 -%}
+  {
+    "id": {{ post.url | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "title": {{ post.title | jsonify }},
+    "excerpt": {{ excerpt_text | jsonify }},
+    "category": {{ post_category | default: "" | jsonify }},
+    "tags": {% if post.tags %}{{ post.tags | jsonify }}{% else %}[]{% endif %},
+    "date": {{ post.date | date_to_xmlschema | jsonify }},
+    "dateDisplay": {{ post.date | date: "%d.%m.%Y" | jsonify }},
+    "readingMinutes": {{ reading_minutes }},
+    "image": {% if post.image.path %}{{ post.image.path | relative_url | jsonify }}{% else %}null{% endif %},
+    "imageAlt": {% if post.image.alt %}{{ post.image.alt | jsonify }}{% else %}null{% endif %}
+  }{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+]

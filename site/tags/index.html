@@ -1,0 +1,51 @@
+---
+layout: default
+title: Теги
+permalink: /tags/
+---
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
+
+<section class="taxonomy" data-tags-page data-ui-empty="{{ ui.search.empty }}" data-ui-empty-tags="{{ ui.filters.empty_tags }}" data-ui-reading="{{ ui.post.reading_time }}">
+  <header class="page__header">
+    <h1 class="page__title">{{ ui.tags.title }}</h1>
+  </header>
+
+  {% if site.tags.size == 0 %}
+    <p class="empty-state">{{ ui.tags.empty }}</p>
+  {% else %}
+    <div class="tag-picker" data-tag-picker>
+      <div class="filters__tags" role="group" aria-label="{{ ui.tags.title }}">
+        {% assign sorted_tags = site.tags | sort %}
+        {% for tag_pair in sorted_tags %}
+          {% assign tag_name = tag_pair[0] %}
+          {% assign tag_posts = tag_pair[1] %}
+          <button
+            type="button"
+            class="tag tag--filter"
+            data-tag="{{ tag_name | escape }}"
+            aria-pressed="false"
+          >{{ tag_name }} <span class="tag__count">{{ tag_posts.size }}</span></button>
+        {% endfor %}
+      </div>
+      <button type="button" class="filters__reset" data-tags-reset hidden>{{ ui.tags.reset }}</button>
+    </div>
+
+    <div data-tags-static>
+      {% for tag_pair in sorted_tags %}
+        {% assign tag_name = tag_pair[0] %}
+        {% assign tag_posts = tag_pair[1] %}
+        <section class="taxonomy-section" id="{{ tag_name | slugify }}" data-tag-section="{{ tag_name | escape }}">
+          <h2 class="taxonomy-section__title">{{ tag_name }}</h2>
+          <p class="taxonomy-section__count">{{ tag_posts.size }} {{ ui.tags.count }}</p>
+          {% include post-list.html posts=tag_posts %}
+        </section>
+      {% endfor %}
+    </div>
+
+    <div data-tags-filtered hidden>
+      <ol class="post-list" data-filtered-list></ol>
+      <p class="empty-state" data-filtered-empty hidden></p>
+    </div>
+  {% endif %}
+</section>

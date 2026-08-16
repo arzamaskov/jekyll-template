@@ -1,0 +1,50 @@
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
+{%- assign all_categories = site.categories | sort -%}
+
+<section class="archive-controls" data-archive-controls>
+  <form class="search" role="search" data-search-form>
+    <label class="visually-hidden" for="site-search">{{ ui.search.label }}</label>
+    <input
+      id="site-search"
+      class="search__input"
+      type="search"
+      name="q"
+      placeholder="{{ ui.search.placeholder }}"
+      autocomplete="off"
+      data-search-input
+    >
+    <button type="button" class="search__clear" data-search-clear hidden>{{ ui.search.clear }}</button>
+  </form>
+
+  <div class="filters" data-filters>
+    <div class="filters__group">
+      <label class="filters__label" for="filter-category">{{ ui.filters.category }}</label>
+      <select id="filter-category" class="filters__select" data-filter-category>
+        <option value="">{{ ui.filters.all_categories }}</option>
+        {% for category in site.categories %}
+          {% assign cat_name = category[0] %}
+          <option value="{{ cat_name | escape }}">{{ cat_name }} ({{ category[1].size }})</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="filters__group filters__group--tags">
+      <p class="filters__label" id="filter-tags-label">{{ ui.filters.tags }}</p>
+      <div class="filters__tags" role="group" aria-labelledby="filter-tags-label" data-filter-tags>
+        {% assign tag_names = site.tags | sort %}
+        {% for tag_pair in tag_names %}
+          {% assign tag_name = tag_pair[0] %}
+          <button
+            type="button"
+            class="tag tag--filter"
+            data-tag="{{ tag_name | escape }}"
+            aria-pressed="false"
+          >{{ tag_name }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <button type="button" class="filters__reset" data-filter-reset hidden>{{ ui.filters.reset }}</button>
+  </div>
+</section>

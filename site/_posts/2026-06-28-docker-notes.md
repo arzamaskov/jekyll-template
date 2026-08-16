@@ -1,0 +1,22 @@
+---
+layout: post
+title: "Docker для локальной разработки без сюрпризов"
+description: "Тома, healthcheck и почему `latest` почти никогда не нужен."
+date: 2026-06-28 14:00:00 +0400
+category: devops
+tags:
+  - docker
+  - linux
+lang: ru
+image:
+  path: /assets/images/posts/docker-notes/cover.svg
+  alt: "Обложка про Docker"
+---
+
+Фиксируйте версии образов. Держите bind-mount только там, где реально нужна живая перезагрузка. Остальное лучше собирать в образ.
+
+Полезный минимум:
+
+- понятный `WORKDIR`
+- non-root пользователь
+- явный `HEALTHCHECK`, если от сервиса зависят другие контейнеры

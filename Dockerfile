@@ -10,7 +10,7 @@ ARG SITE_ROOT=/srv/jekyll
 RUN mkdir -p $SITE_ROOT
 WORKDIR $SITE_ROOT
 
-RUN gem install bundler:2.1.4
+RUN gem install bundler:2.5.23
 
 COPY site/Gemfile site/Gemfile.lock ./
 RUN bundle install --jobs 5

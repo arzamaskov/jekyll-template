@@ -1,0 +1,20 @@
+{%- comment -%}
+  Expects: include.post
+{%- endcomment -%}
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
+{%- assign post = include.post -%}
+{%- include post-category.html post=post -%}
+{%- include reading-time.html content=post.content -%}
+
+<p class="post-meta">
+  <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+    {{ post.date | date: "%d.%m.%Y" }}
+  </time>
+  {% if post_category %}
+    <span class="post-meta__sep" aria-hidden="true">·</span>
+    <a class="post-meta__category" href="{{ '/categories/' | relative_url }}?category={{ post_category | uri_escape }}">{{ post_category }}</a>
+  {% endif %}
+  <span class="post-meta__sep" aria-hidden="true">·</span>
+  <span>{{ reading_minutes }} {{ ui.post.reading_time }}</span>
+</p>

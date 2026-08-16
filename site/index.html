@@ -1,0 +1,20 @@
+---
+layout: default
+title: Главная
+---
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
+
+<section class="archive" data-archive data-ui-empty="{{ ui.search.empty }}" data-ui-empty-tags="{{ ui.filters.empty_tags }}" data-ui-reading="{{ ui.post.reading_time }}">
+  {% include filters.html %}
+
+  <div data-static-archive>
+    {% include post-list.html posts=paginator.posts %}
+    {% include pagination.html %}
+  </div>
+
+  <div data-filtered-archive hidden>
+    <ol class="post-list" data-filtered-list></ol>
+    <p class="empty-state" data-filtered-empty hidden></p>
+  </div>
+</section>

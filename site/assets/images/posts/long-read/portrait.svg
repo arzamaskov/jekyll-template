@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="720" viewBox="0 0 480 720">
+  <rect width="480" height="720" fill="#e4e1da"/>
+  <circle cx="240" cy="260" r="90" fill="#cfc9be"/>
+  <rect x="120" y="380" width="240" height="220" rx="16" fill="#cfc9be"/>
+  <text x="240" y="660" text-anchor="middle" font-family="IBM Plex Sans, Arial, sans-serif" font-size="22" fill="#6a6760">portrait</text>
+</svg>

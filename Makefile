@@ -14,3 +14,9 @@ logs:
 
 shell:
 	docker compose exec jekyll sh
+
+jekyll-build:
+	docker compose run --rm jekyll bundle exec jekyll build
+
+jekyll-serve:
+	docker compose up

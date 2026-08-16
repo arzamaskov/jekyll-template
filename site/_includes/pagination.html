@@ -1,0 +1,39 @@
+{%- if paginator.total_pages > 1 -%}
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
+<nav class="pagination" aria-label="{{ ui.pagination.page }}">
+  <div class="pagination__newer">
+    {% if paginator.previous_page %}
+      <a href="{% if paginator.previous_page == 1 %}{{ '/' | relative_url }}{% else %}{{ paginator.previous_page_path | relative_url }}{% endif %}">
+        ← {{ ui.pagination.newer }}
+      </a>
+    {% else %}
+      <span class="pagination__disabled">← {{ ui.pagination.newer }}</span>
+    {% endif %}
+  </div>
+
+  <ol class="pagination__pages">
+    {% for page_num in (1..paginator.total_pages) %}
+      <li>
+        {% if page_num == paginator.page %}
+          <span class="pagination__current" aria-current="page">{{ page_num }}</span>
+        {% elsif page_num == 1 %}
+          <a href="{{ '/' | relative_url }}">{{ page_num }}</a>
+        {% else %}
+          <a href="{{ site.paginate_path | replace: ':num', page_num | relative_url }}">{{ page_num }}</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+
+  <div class="pagination__older">
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">
+        {{ ui.pagination.older }} →
+      </a>
+    {% else %}
+      <span class="pagination__disabled">{{ ui.pagination.older }} →</span>
+    {% endif %}
+  </div>
+</nav>
+{%- endif -%}

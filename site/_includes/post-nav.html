@@ -1,0 +1,22 @@
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
+{%- if page.previous or page.next -%}
+<nav class="post-nav" aria-label="{{ ui.post.previous }} / {{ ui.post.next }}">
+  <div class="post-nav__prev">
+    {% if page.previous %}
+      <a href="{{ page.previous.url | relative_url }}">
+        <span class="post-nav__label">← {{ ui.post.previous }}</span>
+        <span class="post-nav__title">{{ page.previous.title }}</span>
+      </a>
+    {% endif %}
+  </div>
+  <div class="post-nav__next">
+    {% if page.next %}
+      <a href="{{ page.next.url | relative_url }}">
+        <span class="post-nav__label">{{ ui.post.next }} →</span>
+        <span class="post-nav__title">{{ page.next.title }}</span>
+      </a>
+    {% endif %}
+  </div>
+</nav>
+{%- endif -%}

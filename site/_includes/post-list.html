@@ -1,0 +1,70 @@
+{%- comment -%}
+  Expects: include.posts (optional, defaults to paginator.posts)
+{%- endcomment -%}
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
+{%- assign posts = include.posts | default: paginator.posts -%}
+
+{% if posts.size == 0 %}
+  <p class="empty-state" data-empty-default>{{ ui.filters.empty_posts }}</p>
+{% else %}
+  <ol class="post-list" data-post-list>
+    {% for post in posts %}
+      {%- include post-category.html post=post -%}
+      {%- include reading-time.html content=post.content -%}
+      <li
+        class="post-list__item"
+        data-title="{{ post.title | escape }}"
+        data-excerpt="{{ post.description | default: post.excerpt | strip_html | truncate: 280 | escape }}"
+        data-category="{{ post_category | escape }}"
+        data-tags="{{ post.tags | join: ',' | escape }}"
+        data-url="{{ post.url | relative_url }}"
+        data-date="{{ post.date | date_to_xmlschema }}"
+        data-date-display="{{ post.date | date: '%d.%m.%Y' }}"
+        data-reading="{{ reading_minutes }}"
+        {% if post.image.path %}data-image="{{ post.image.path | relative_url }}" data-image-alt="{{ post.image.alt | default: post.title | escape }}"{% endif %}
+      >
+        <article class="post-teaser">
+          <div class="post-teaser__body">
+            <p class="post-teaser__meta">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d.%m.%Y" }}</time>
+              {% if post_category %}
+                <span aria-hidden="true">·</span>
+                <a href="{{ '/categories/' | relative_url }}?category={{ post_category | uri_escape }}">{{ post_category }}</a>
+              {% endif %}
+              <span aria-hidden="true">·</span>
+              <span>{{ reading_minutes }} {{ ui.post.reading_time }}</span>
+            </p>
+            <h2 class="post-teaser__title">
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h2>
+            {% assign excerpt_text = post.description | default: post.excerpt | strip_html | strip | truncate: 220 %}
+            {% if excerpt_text != "" %}
+              <p class="post-teaser__excerpt">{{ excerpt_text }}</p>
+            {% endif %}
+            {% if post.tags and post.tags.size > 0 %}
+              <ul class="tag-list tag-list--compact">
+                {% for tag in post.tags %}
+                  <li><a class="tag" href="{{ '/tags/' | relative_url }}?tags={{ tag | uri_escape }}">{{ tag }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+          {% if post.image.path %}
+            <a class="post-teaser__image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+              <img
+                src="{{ post.image.path | relative_url }}"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                width="160"
+                height="100"
+              >
+            </a>
+          {% endif %}
+        </article>
+      </li>
+    {% endfor %}
+  </ol>
+{% endif %}
+<p class="empty-state" data-empty-filtered hidden>{{ ui.search.empty }}</p>

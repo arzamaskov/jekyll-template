@@ -1,0 +1,10 @@
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__copy">&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+    <p class="site-footer__links">
+      <a href="{{ '/feed.xml' | relative_url }}">{{ ui.footer.feed }}</a>
+    </p>
+  </div>
+</footer>

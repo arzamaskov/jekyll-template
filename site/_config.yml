@@ -1,3 +1,67 @@
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
-title: "123" # the name of your site, e.g. ACME Corp.
+title: "arzamaskov"
+description: "Личный технический блог"
+url: "https://arzamaskov.github.io"
+baseurl: ""
+lang: ru
+timezone: Europe/Moscow
+
+permalink: /:year/:month/:day/:title/
+
+paginate: 10
+paginate_path: "/page/:num/"
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+
+toc:
+  min_level: 2
+  max_level: 3
+  ordered_list: false
+  no_toc_section_class: no_toc
+  list_id: toc
+  list_class: toc-list
+  sublist_class: toc-sublist
+  item_class: toc-item
+  item_prefix: toc-
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      lang: ru
+      toc: false
+  - scope:
+      path: ""
+    values:
+      lang: ru
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - node_modules
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-toc
+
+sass:
+  style: compressed
+
+# Approximate reading speed (words per minute)
+words_per_minute: 180

@@ -1,12 +1,19 @@
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>{{ page.title }} - {{ site.title }}</title>
-    <!-- <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}"> -->
-  </head>
-  <body>
-    {{ content }}
+<html lang="{{ page_lang }}">
+  {% include head.html %}
+  <body
+    data-ui-copy="{{ ui.code.copy }}"
+    data-ui-copied="{{ ui.code.copied }}"
+    data-ui-close="{{ ui.lightbox.close }}"
+    data-baseurl="{{ site.baseurl }}"
+  >
+    {% include header.html %}
+    <main id="main" class="site-main">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+    <script type="module" src="{{ '/assets/js/main.js' | relative_url }}"></script>
   </body>
 </html>
