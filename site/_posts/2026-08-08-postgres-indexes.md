@@ -8,9 +8,6 @@ tags:
   - postgresql
   - performance
 lang: ru
-image:
-  path: /assets/images/posts/postgres-indexes/cover.svg
-  alt: "Обложка про индексы PostgreSQL"
 ---
 
 Индекс ускоряет чтение и замедляет запись. Это не лозунг, а рабочая модель принятия решений.

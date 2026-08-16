@@ -9,9 +9,6 @@ tags:
   - go
   - ddd
 lang: ru
-image:
-  path: /assets/images/posts/architecture-hex/cover.svg
-  alt: "Обложка про гексагональную архитектуру"
 toc: true
 ---
 

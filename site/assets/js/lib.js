@@ -84,7 +84,7 @@ export function renderPostList(container, posts, { readingLabel }) {
       const tags = (post.tags || [])
         .map(
           (tag) =>
-            `<li><a class="tag" href="${withBase("/tags/")}?tags=${encodeURIComponent(tag)}">${escapeHtml(tag)}</a></li>`
+            `<li><a class="tag--meta" href="${withBase("/tags/")}?tags=${encodeURIComponent(tag)}">${escapeHtml(tag)}</a></li>`
         )
         .join("");
 

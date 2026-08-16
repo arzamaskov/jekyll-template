@@ -6,7 +6,7 @@
 }
 
 .site-header {
-  padding: var(--space-6) 0 var(--space-5);
+  padding: var(--space-5) 0 var(--space-6);
 }
 
 .site-header__inner {
@@ -14,11 +14,11 @@
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: var(--space-3) var(--space-4);
 }
 
 .site-logo {
-  font-size: var(--text-lg);
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--color-text);
   text-decoration: none;
@@ -81,6 +81,9 @@
 
 .page__title {
   margin-bottom: var(--space-2);
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 600;
+  line-height: var(--leading-snug);
 }
 
 .page__lead {
@@ -89,5 +92,5 @@
 }
 
 .not-found {
-  padding-top: var(--space-7);
+  padding-top: var(--space-6);
 }

@@ -8,9 +8,6 @@ tags:
   - linux
   - systemd
 lang: ru
-image:
-  path: /assets/images/posts/linux-systemd/cover.svg
-  alt: "Обложка про systemd"
 ---
 
 Самое полезное в `systemd` — явные зависимости и предсказуемый жизненный цикл процесса.

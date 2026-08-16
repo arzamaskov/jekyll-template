@@ -8,9 +8,6 @@ tags:
   - git
   - workflow
 lang: ru
-image:
-  path: /assets/images/posts/git-rebase/cover.svg
-  alt: "Обложка про git rebase"
 ---
 
 `rebase` удобен для локальной уборки истории. Публичные ветки лучше трогать осторожно.

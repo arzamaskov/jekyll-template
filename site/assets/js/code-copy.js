@@ -8,10 +8,11 @@ export function initCodeCopy() {
   blocks.forEach((pre) => {
     if (pre.closest(".code-block")) return;
 
+    const target = pre.closest(".highlight") || pre;
     const wrapper = document.createElement("div");
     wrapper.className = "code-block";
-    pre.parentNode.insertBefore(wrapper, pre);
-    wrapper.appendChild(pre);
+    target.parentNode.insertBefore(wrapper, target);
+    wrapper.appendChild(target);
 
     const button = document.createElement("button");
     button.type = "button";

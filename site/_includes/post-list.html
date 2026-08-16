@@ -45,7 +45,7 @@
             {% if post.tags and post.tags.size > 0 %}
               <ul class="tag-list tag-list--compact">
                 {% for tag in post.tags %}
-                  <li><a class="tag" href="{{ '/tags/' | relative_url }}?tags={{ tag | uri_escape }}">{{ tag }}</a></li>
+                  <li><a class="tag--meta" href="{{ '/tags/' | relative_url }}?tags={{ tag | uri_escape }}">{{ tag }}</a></li>
                 {% endfor %}
               </ul>
             {% endif %}

@@ -10,9 +10,6 @@ tags:
   - go
   - linux
 lang: ru
-image:
-  path: /assets/images/posts/long-read/cover.svg
-  alt: "Обложка длинной статьи о техническом письме"
 toc: true
 ---
 

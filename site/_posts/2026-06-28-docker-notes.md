@@ -8,9 +8,6 @@ tags:
   - docker
   - linux
 lang: ru
-image:
-  path: /assets/images/posts/docker-notes/cover.svg
-  alt: "Обложка про Docker"
 ---
 
 Фиксируйте версии образов. Держите bind-mount только там, где реально нужна живая перезагрузка. Остальное лучше собирать в образ.

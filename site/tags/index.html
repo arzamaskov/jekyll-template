@@ -22,7 +22,7 @@ permalink: /tags/
           {% assign tag_posts = tag_pair[1] %}
           <button
             type="button"
-            class="tag tag--filter"
+            class="tag--filter"
             data-tag="{{ tag_name | escape }}"
             aria-pressed="false"
           >{{ tag_name }} <span class="tag__count">{{ tag_posts.size }}</span></button>

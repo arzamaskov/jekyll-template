@@ -8,9 +8,6 @@ tags:
   - go
   - architecture
 lang: ru
-image:
-  path: /assets/images/posts/go-interfaces/cover.svg
-  alt: "Схематичная обложка про интерфейсы Go"
 toc: false
 ---
 
