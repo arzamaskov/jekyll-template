@@ -25,6 +25,13 @@
   gap: var(--space-3) var(--space-4);
 }
 
+.site-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+}
+
 .site-logo {
   font-size: 1.05rem;
   font-weight: 600;

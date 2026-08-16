@@ -1,0 +1,38 @@
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
+{%- assign labels = ui.category_labels -%}
+{%- assign ordered = ui.category_order -%}
+
+{% if site.categories.size > 0 %}
+  <nav class="category-nav" aria-label="{{ ui.nav.categories }}">
+    {%- assign rendered = 0 -%}
+    {% for cat_name in ordered %}
+      {% if site.categories[cat_name] %}
+        {% assign cat_label = labels[cat_name] | default: cat_name %}
+        {% if rendered > 0 %}
+          <span class="category-nav__sep" aria-hidden="true">·</span>
+        {% endif %}
+        <a
+          class="category-nav__link"
+          href="{{ '/categories/' | relative_url }}#{{ cat_name | slugify }}"
+        >{{ cat_label }}</a>
+        {%- assign rendered = rendered | plus: 1 -%}
+      {% endif %}
+    {% endfor %}
+    {% comment %} Any categories not listed in category_order {% endcomment %}
+    {% for category in site.categories %}
+      {% assign cat_name = category[0] %}
+      {% unless ordered contains cat_name %}
+        {% assign cat_label = labels[cat_name] | default: cat_name %}
+        {% if rendered > 0 %}
+          <span class="category-nav__sep" aria-hidden="true">·</span>
+        {% endif %}
+        <a
+          class="category-nav__link"
+          href="{{ '/categories/' | relative_url }}#{{ cat_name | slugify }}"
+        >{{ cat_label }}</a>
+        {%- assign rendered = rendered | plus: 1 -%}
+      {% endunless %}
+    {% endfor %}
+  </nav>
+{% endif %}

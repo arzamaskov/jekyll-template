@@ -8,6 +8,20 @@ ru:
     placeholder: "Поиск по статьям…"
     clear: "Очистить"
     empty: "По вашему запросу ничего не найдено"
+  category_labels:
+    programming: "Программирование"
+    linux: "Linux"
+    databases: "Базы данных"
+    architecture: "Архитектура"
+    devops: "DevOps"
+    craft: "Craft"
+  category_order:
+    - programming
+    - linux
+    - databases
+    - architecture
+    - devops
+    - craft
   filters:
     category: "Категория"
     tags: "Теги"
@@ -71,6 +85,20 @@ en:
     placeholder: "Search posts…"
     clear: "Clear"
     empty: "Nothing found for your query"
+  category_labels:
+    programming: "Programming"
+    linux: "Linux"
+    databases: "Databases"
+    architecture: "Architecture"
+    devops: "DevOps"
+    craft: "Craft"
+  category_order:
+    - programming
+    - linux
+    - databases
+    - architecture
+    - devops
+    - craft
   filters:
     category: "Category"
     tags: "Tags"
