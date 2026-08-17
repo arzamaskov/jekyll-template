@@ -14,7 +14,7 @@
   </time>
   {% if post_category %}
     <span class="post-meta__sep" aria-hidden="true">·</span>
-    <a class="post-meta__category" href="{{ '/categories/' | relative_url }}?category={{ post_category | uri_escape }}">{{ post_category }}</a>
+    <a class="post-meta__category" href="{{ '/categories/' | relative_url }}{{ post_category | slugify }}/">{{ post_category }}</a>
   {% endif %}
   <span class="post-meta__sep" aria-hidden="true">·</span>
   <span>{{ reading_minutes }} {{ ui.post.reading_time }}</span>

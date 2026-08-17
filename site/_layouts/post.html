@@ -12,7 +12,7 @@ layout: default
       <ul class="tag-list" aria-label="{{ ui.filters.tags }}">
         {% for tag in page.tags %}
           <li>
-            <a class="tag--meta" href="{{ '/tags/' | relative_url }}?tags={{ tag | uri_escape }}">{{ tag }}</a>
+            <a class="tag--meta" href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/">{{ tag }}</a>
           </li>
         {% endfor %}
       </ul>

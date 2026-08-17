@@ -54,11 +54,23 @@ exclude:
   - node_modules
 
 plugins:
+  - jekyll-archives
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-toc
+
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: category_archive
+    tag: tag_archive
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
 
 sass:
   style: compressed

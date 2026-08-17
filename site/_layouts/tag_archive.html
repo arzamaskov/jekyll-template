@@ -1,0 +1,15 @@
+---
+layout: default
+---
+{%- assign page_lang = page.lang | default: site.lang | default: "ru" -%}
+{%- assign ui = site.data.ui[page_lang] -%}
+{%- assign tag_name = page.title -%}
+{%- include pluralize-posts.html count=page.posts.size -%}
+
+<section class="taxonomy">
+  <header class="page__header">
+    <h1 class="page__title">{{ tag_name }}</h1>
+    <p class="page__lead">{{ page.posts.size }} {{ posts_count_label }}</p>
+  </header>
+  {% include post-list.html posts=page.posts %}
+</section>

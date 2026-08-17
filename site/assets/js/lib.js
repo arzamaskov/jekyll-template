@@ -84,7 +84,7 @@ export function renderPostList(container, posts, { readingLabel }) {
       const tags = (post.tags || [])
         .map(
           (tag) =>
-            `<li><a class="tag--meta" href="${withBase("/tags/")}?tags=${encodeURIComponent(tag)}">${escapeHtml(tag)}</a></li>`
+            `<li><a class="tag--meta" href="${withBase("/tags/")}${encodeURIComponent(slugify(tag))}/">${escapeHtml(tag)}</a></li>`
         )
         .join("");
 
@@ -96,7 +96,7 @@ export function renderPostList(container, posts, { readingLabel }) {
 
       const category = post.category
         ? `<span aria-hidden="true">·</span>
-           <a href="${withBase("/categories/")}?category=${encodeURIComponent(post.category)}">${escapeHtml(post.category)}</a>`
+           <a href="${withBase("/categories/")}${encodeURIComponent(slugify(post.category))}/">${escapeHtml(post.category)}</a>`
         : "";
 
       return `<li class="post-list__item">
@@ -132,4 +132,12 @@ function escapeHtml(value) {
 
 function escapeAttr(value) {
   return escapeHtml(value);
+}
+
+function slugify(value) {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, "-")
+    .replace(/^-+|-+$/g, "");
 }

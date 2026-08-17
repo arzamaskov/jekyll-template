@@ -14,7 +14,7 @@
         {% endif %}
         <a
           class="category-nav__link"
-          href="{{ '/categories/' | relative_url }}#{{ cat_name | slugify }}"
+          href="{{ '/categories/' | relative_url }}{{ cat_name | slugify }}/"
         >{{ cat_label }}</a>
         {%- assign rendered = rendered | plus: 1 -%}
       {% endif %}
@@ -29,7 +29,7 @@
         {% endif %}
         <a
           class="category-nav__link"
-          href="{{ '/categories/' | relative_url }}#{{ cat_name | slugify }}"
+          href="{{ '/categories/' | relative_url }}{{ cat_name | slugify }}/"
         >{{ cat_label }}</a>
         {%- assign rendered = rendered | plus: 1 -%}
       {% endunless %}
