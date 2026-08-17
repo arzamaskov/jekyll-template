@@ -41,6 +41,13 @@ export function initSearchPanel() {
     else open();
   });
 
+  const wrapper = toggle.closest(".site-search");
+  document.addEventListener("click", (event) => {
+    if (!isOpen()) return;
+    if (wrapper && wrapper.contains(event.target)) return;
+    close({ clearQuery: false });
+  });
+
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && isOpen()) {
       event.preventDefault();

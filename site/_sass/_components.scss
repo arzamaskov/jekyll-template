@@ -1,5 +1,12 @@
 /* —— Header search —— */
 
+.site-search {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 2rem;
+}
+
 .site-search-toggle {
   display: inline-flex;
   align-items: center;
@@ -17,12 +24,18 @@
   color: var(--color-text);
 }
 
+/* When open, the icon is replaced by the input */
 .site-search-toggle[aria-expanded="true"] {
   color: var(--color-text);
+  display: none;
 }
 
 .site-search-panel {
-  margin-top: var(--space-3);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 20;
 }
 
 .site-search-panel[hidden] {
@@ -30,13 +43,7 @@
 }
 
 .site-search-panel .search {
-  max-width: 25rem;
-}
-
-@media (max-width: 639px) {
-  .site-search-panel .search {
-    max-width: none;
-  }
+  width: min(25rem, calc(100vw - 2rem));
 }
 
 /* —— Homepage category nav —— */
