@@ -10,17 +10,13 @@ export function initTagsPage() {
   const root = document.querySelector("[data-tags-page]");
   if (!root) return;
 
-  const picker = root.querySelector("[data-tag-picker]");
   const buttons = [...root.querySelectorAll("[data-tag]")];
   const resetButton = root.querySelector("[data-tags-reset]");
-  const staticBlock = root.querySelector("[data-tags-static]");
   const filteredBlock = root.querySelector("[data-tags-filtered]");
   const filteredList = root.querySelector("[data-filtered-list]");
   const filteredEmpty = root.querySelector("[data-filtered-empty]");
   const readingLabel = root.dataset.uiReading || "";
   const emptyTagsLabel = root.dataset.uiEmptyTags || "";
-
-  if (picker) picker.hidden = false;
 
   let state = getQueryState();
   applyButtons(state.tags);
@@ -34,7 +30,6 @@ export function initTagsPage() {
     if (resetButton) resetButton.hidden = tags.length === 0;
 
     if (tags.length === 0) {
-      staticBlock.hidden = false;
       filteredBlock.hidden = true;
       return;
     }
@@ -42,7 +37,6 @@ export function initTagsPage() {
     const posts = await loadIndex();
     const filtered = filterPosts(posts, { tags, q: "", category: "" });
 
-    staticBlock.hidden = true;
     filteredBlock.hidden = false;
 
     if (filtered.length === 0) {

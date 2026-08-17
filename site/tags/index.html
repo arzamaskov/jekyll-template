@@ -14,7 +14,7 @@ permalink: /tags/
   {% if site.tags.size == 0 %}
     <p class="empty-state">{{ ui.tags.empty }}</p>
   {% else %}
-    <div class="tag-picker" data-tag-picker hidden>
+    <div class="tag-picker" data-tag-picker>
       <div class="filters__tags" role="group" aria-label="{{ ui.filters.tags }}">
         {% assign sorted_tags = site.tags | sort %}
         {% for tag_pair in sorted_tags %}
@@ -30,23 +30,6 @@ permalink: /tags/
       </div>
       <button type="button" class="filters__reset" data-tags-reset hidden>{{ ui.tags.reset }}</button>
     </div>
-
-    <ul class="taxonomy-index" data-tags-static>
-      {% assign sorted_tags = site.tags | sort %}
-      {% for tag_pair in sorted_tags %}
-        {% assign tag_name = tag_pair[0] %}
-        {% assign tag_posts = tag_pair[1] %}
-        <li>
-          <a
-            class="taxonomy-index__link"
-            href="{{ '/tags/' | relative_url }}{{ tag_name | slugify }}/"
-          >
-            <span>{{ tag_name }}</span>
-            <span class="taxonomy-index__count">{{ tag_posts.size }}</span>
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
 
     <div data-tags-filtered hidden>
       <ol class="post-list" data-filtered-list></ol>
